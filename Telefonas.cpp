@@ -4,7 +4,28 @@
 
 using namespace std;
 
-class Telefonas {
+class Phone {
+	static int phoneCount;
+	static int phoneIDCount;
+
+private:
+	string brand;
+	string model;
+	int price;
+	int phoneID;
+
+public:
+	~Phone() {
+
+	}
+
+	Phone(string brand, string model, int price) {
+
+	}
+
+	Phone(string model, int price) {
+
+	}
 
 };
 
