@@ -76,7 +76,7 @@ public:
 
 	string toString() const {
 		ostringstream phoneData;
-		phoneData << "Here is the info about this phone: \n" << "Brand: " << brand << "\n Model: " << model << "\n Price: " << price << "\n Phone ID: " << phoneID;
+		phoneData << "Here is the info about this phone: \n" << "Brand: " << getBrand() << "\n Model: " << getModel() << "\n Price: " << getPrice() << "\n Phone ID: " << getPhoneID();
 		return phoneData.str();
 	}
 };
