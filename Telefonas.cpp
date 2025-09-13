@@ -85,6 +85,9 @@ int Phone::phoneCount = 0;
 int Phone::phoneIDCount = 0;
 
 int main() {
+	assert(Phone::getPhoneCount() == 0);
+	cout << "Initial phone count correct" << endl;
+
 	try {
 		Phone phone("zPhone 1", 200);
 
@@ -92,7 +95,7 @@ int main() {
 		assert(phone.getPrice() == 200);
 		assert(phone.getPhoneCount() == 1);
 		assert(phone.getPhoneID() == 0);
-		cout << "Constructor passed" << endl;
+		cout << "Constructor check passed" << endl;
 		cout << phone.toString() << endl;
 
 
@@ -106,6 +109,36 @@ int main() {
 		assert(phone.getPrice() == 250);
 		cout << "Phone attribute setter and getter check passed" << endl;
 		cout << phone.toString() << endl;
+
+
+		const int testArray = 10;
+
+		Phone* zphones[testArray];
+		for (int i = 0; i < testArray; i++) {
+			zphones[i] = new Phone("Pear", "zPhone " + to_string(i + 2),	300 + (i * 50));
+		}
+
+		assert(zphones[2]->getModel() == "zPhone 4");
+		assert(zphones[6]->getPrice() == 600);
+		assert(zphones[9]->getModel() == "zPhone 11");
+		cout << "zPhone list created and filled correctly" << endl;
+
+		assert(Phone::getPhoneCount() == 11);
+		cout << "Object count is correct" << endl;
+
+		assert(phone.getPhoneID() == 0);
+		assert(zphones[3]->getPhoneID() == 4);
+		assert(zphones[9]->getPhoneID() == 10);
+		cout << "IDs assigned correctly" << endl;
+
+		cout << zphones[2]->toString() << endl;
+		cout << zphones[8]->toString() << endl;
+
+		for (int i = 0; i < testArray; i++) {
+			delete zphones[i];
+		}
+		assert(Phone::getPhoneCount() == 1);
+		cout << "Object count after deletion correct" << endl;
 	}
 	catch (string& model) {
 
