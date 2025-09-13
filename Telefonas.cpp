@@ -36,8 +36,37 @@ public:
 		phoneID = phoneIDCount;
 	}
 
+	void setBrand(string brand) {
 
+	}
+	string getBrand() {
 
+	}
+
+	void setModel(string model) {
+
+	}
+	string getModel() {
+
+	}
+
+	void setPrice() {
+
+	}
+	int getPrice() {
+
+	}
+
+	static int getPhoneCount() {
+
+	}
+	int getPhoneID() {
+
+	}
+
+	string toString() const {
+
+	}
 };
 
 int main() {
