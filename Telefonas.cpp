@@ -81,6 +81,19 @@ public:
 	}
 };
 
+int Phone::phoneCount = 0;
+int Phone::phoneIDCount = 0;
+
 int main() {
+	try {
+
+	}
+	catch (string& model) {
+
+	}
+	catch (int price) {
+
+	}
+
 	return 0;
 }
