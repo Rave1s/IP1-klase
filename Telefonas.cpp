@@ -24,22 +24,22 @@ public:
 		setModel(model);
 		setPrice(price);
 		phoneCount++;
-		phoneIDCount++;
 		phoneID = phoneIDCount;
+		phoneIDCount++;
 	}
 
 	Phone(string model, int price) {
 		setModel(model);
 		setPrice(price);
 		phoneCount++;
-		phoneIDCount++;
 		phoneID = phoneIDCount;
+		phoneIDCount++;
 	}
 
 	void setBrand(string brand) {
 		this->brand = brand;
 	}
-	string getBrand() {
+	string getBrand() const {
 		return brand;
 	}
 
@@ -51,7 +51,7 @@ public:
 			throw model;
 		}
 	}
-	string getModel() {
+	string getModel() const {
 		return model;
 	}
 
@@ -63,20 +63,20 @@ public:
 			throw price;
 		}
 	}
-	int getPrice() {
+	int getPrice() const {
 		return price;
 	}
 
 	static int getPhoneCount() {
 		return phoneCount;
 	}
-	int getPhoneID() {
+	int getPhoneID() const {
 		return phoneID;
 	}
 
 	string toString() const {
 		ostringstream phoneData;
-		phoneData << "Here is the info about this phone: \n" << "Brand: " << getBrand() << "\n Model: " << getModel() << "\n Price: " << getPrice() << "\n Phone ID: " << getPhoneID();
+		phoneData << "Here is the info about this phone: \n" << "Brand: " << getBrand() << "\nModel: " << getModel() << "\nPrice: " << getPrice() << "\nPhone ID: " << getPhoneID();
 		return phoneData.str();
 	}
 };
@@ -86,7 +86,26 @@ int Phone::phoneIDCount = 0;
 
 int main() {
 	try {
+		Phone phone("zPhone 1", 200);
 
+		assert(phone.getModel() == "zPhone 1");
+		assert(phone.getPrice() == 200);
+		assert(phone.getPhoneCount() == 1);
+		assert(phone.getPhoneID() == 0);
+		cout << "Constructor passed" << endl;
+		cout << phone.toString() << endl;
+
+
+		phone.setBrand("Pear");
+		assert(phone.getBrand() == "Pear");
+
+		phone.setModel("zPhone");
+		assert(phone.getModel() == "zPhone");
+
+		phone.setPrice(250);
+		assert(phone.getPrice() == 250);
+		cout << "Phone attribute setter and getter check passed" << endl;
+		cout << phone.toString() << endl;
 	}
 	catch (string& model) {
 
