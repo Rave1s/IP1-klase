@@ -13,6 +13,7 @@ private:
 	string model;
 	int price;
 	int phoneID;
+	int numOfCalls;
 
 public:
 	~Phone() {
@@ -26,6 +27,7 @@ public:
 		phoneCount++;
 		phoneID = phoneIDCount;
 		phoneIDCount++;
+		numOfCalls = 0;
 	}
 
 	Phone(string model, int price) {
@@ -34,6 +36,7 @@ public:
 		phoneCount++;
 		phoneID = phoneIDCount;
 		phoneIDCount++;
+		numOfCalls = 0;
 	}
 
 	void setBrand(string brand) {
@@ -74,9 +77,17 @@ public:
 		return phoneID;
 	}
 
+	void call() {
+		cout << "You called someone using the " << getModel() << endl;
+		numOfCalls++;
+	}
+	int getNumberOfCalls() const {
+		return numOfCalls;
+	}
+
 	string toString() const {
 		ostringstream phoneData;
-		phoneData << "Here is the info about this phone: \n" << "Brand: " << getBrand() << "\nModel: " << getModel() << "\nPrice: " << getPrice() << "\nPhone ID: " << getPhoneID();
+		phoneData << "Here is the info about this phone: \n" << "Brand: " << getBrand() << "\nModel: " << getModel() << "\nPrice: " << getPrice() << "\nPhone ID: " << getPhoneID() << "\nNumber of calls made with this phone: " << getNumberOfCalls();
 		return phoneData.str();
 	}
 };
@@ -95,6 +106,7 @@ int main() {
 		assert(phone.getPrice() == 200);
 		assert(phone.getPhoneCount() == 1);
 		assert(phone.getPhoneID() == 0);
+		assert(phone.getNumberOfCalls() == 0);
 		cout << "Constructor check passed" << endl;
 		cout << phone.toString() << endl;
 
@@ -108,6 +120,12 @@ int main() {
 		phone.setPrice(250);
 		assert(phone.getPrice() == 250);
 		cout << "Phone attribute setter and getter check passed" << endl;
+		
+		for (int i = 0; i < 3; i++) {
+			phone.call();
+		}
+		assert(phone.getNumberOfCalls() == 3);
+		cout << "Call method works" << endl;
 		cout << phone.toString() << endl;
 
 
@@ -116,11 +134,13 @@ int main() {
 		Phone* zphones[testArray];
 		for (int i = 0; i < testArray; i++) {
 			zphones[i] = new Phone("Pear", "zPhone " + to_string(i + 2),	300 + (i * 50));
+			zphones[i]->call();
 		}
 
 		assert(zphones[2]->getModel() == "zPhone 4");
 		assert(zphones[6]->getPrice() == 600);
 		assert(zphones[9]->getModel() == "zPhone 11");
+		assert(zphones[7]->getNumberOfCalls() == 1);
 		cout << "zPhone list created and filled correctly" << endl;
 
 		assert(Phone::getPhoneCount() == 11);
