@@ -37,31 +37,41 @@ public:
 	}
 
 	void setBrand(string brand) {
-
+		this->brand = brand;
 	}
 	string getBrand() {
-
+		return brand;
 	}
 
 	void setModel(string model) {
-
+		if (!model.empty()) {
+			this->model = model;
+		}
+		else {
+			throw model;
+		}
 	}
 	string getModel() {
-
+		return model;
 	}
 
-	void setPrice() {
-
+	void setPrice(int price) {
+		if (price >= 0) {
+			this->price = price;
+		}
+		else {
+			throw price;
+		}
 	}
 	int getPrice() {
-
+		return price;
 	}
 
 	static int getPhoneCount() {
-
+		return phoneCount;
 	}
 	int getPhoneID() {
-
+		return phoneID;
 	}
 
 	string toString() const {
