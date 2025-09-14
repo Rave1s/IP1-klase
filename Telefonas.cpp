@@ -161,10 +161,10 @@ int main() {
 		cout << "Object count after deletion correct" << endl;
 	}
 	catch (string& model) {
-
+		cout << "Phone's model must be provided" << endl;
 	}
 	catch (int price) {
-
+		cout << "Price cannot be negative" << endl;
 	}
 
 	return 0;
