@@ -167,5 +167,8 @@ int main() {
 		cout << "Price cannot be negative" << endl;
 	}
 
+	assert(Phone::getPhoneCount() == 0);
+	cout << "Object count upon deletion is correct" << endl;
+
 	return 0;
 }
