@@ -11,7 +11,7 @@ class Phone {
 private:
 	string brand;
 	string model;
-	int price;
+	double price;
 	int phoneID;
 	int numOfCalls;
 
@@ -20,7 +20,7 @@ public:
 		phoneCount--;
 	}
 
-	Phone(string brand, string model, int price) {
+	Phone(string brand, string model, double price) {
 		setBrand(brand);
 		setModel(model);
 		setPrice(price);
@@ -30,7 +30,7 @@ public:
 		numOfCalls = 0;
 	}
 
-	Phone(string model, int price) {
+	Phone(string model, double price) {
 		setModel(model);
 		setPrice(price);
 		phoneCount++;
@@ -58,15 +58,15 @@ public:
 		return model;
 	}
 
-	void setPrice(int price) {
-		if (price >= 0) {
+	void setPrice(double price) {
+		if (price >= 0.0) {
 			this->price = price;
 		}
 		else {
 			throw price;
 		}
 	}
-	int getPrice() const {
+	double getPrice() const {
 		return price;
 	}
 
@@ -100,10 +100,10 @@ int main() {
 	cout << "Initial phone count correct" << endl;
 
 	try {
-		Phone phone("zPhone 1", 200);
+		Phone phone("zPhone 1", 199.99);
 
 		assert(phone.getModel() == "zPhone 1");
-		assert(phone.getPrice() == 200);
+		assert(phone.getPrice() == 199.99);
 		assert(phone.getPhoneCount() == 1);
 		assert(phone.getPhoneID() == 0);
 		assert(phone.getNumberOfCalls() == 0);
@@ -117,8 +117,8 @@ int main() {
 		phone.setModel("zPhone");
 		assert(phone.getModel() == "zPhone");
 
-		phone.setPrice(250);
-		assert(phone.getPrice() == 250);
+		phone.setPrice(249.99);
+		assert(phone.getPrice() == 249.99);
 		cout << "Phone attribute setter and getter check passed" << endl;
 		
 		for (int i = 0; i < 3; i++) {
@@ -133,12 +133,12 @@ int main() {
 
 		Phone* zphones[testArray];
 		for (int i = 0; i < testArray; i++) {
-			zphones[i] = new Phone("Pear", "zPhone " + to_string(i + 2),	300 + (i * 50));
+			zphones[i] = new Phone("Pear", "zPhone " + to_string(i + 2),	299.99 + (i * 50.00));
 			zphones[i]->call();
 		}
 
 		assert(zphones[2]->getModel() == "zPhone 4");
-		assert(zphones[6]->getPrice() == 600);
+		assert(zphones[6]->getPrice() == 599.99);
 		assert(zphones[9]->getModel() == "zPhone 11");
 		assert(zphones[7]->getNumberOfCalls() == 1);
 		cout << "zPhone list created and filled correctly" << endl;
