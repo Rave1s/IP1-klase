@@ -1,3 +1,7 @@
+/**
+ * @author Arturas Timofejevas (@Rave1s), VU SE 2 course 2 group
+ */
+
 #include <iostream>
 #include <sstream>
 #include <cassert>
@@ -5,10 +9,11 @@
 using namespace std;
 
 class Phone {
-	static int phoneCount;
-	static int phoneIDCount;
+	
 
 private:
+	static int phoneCount;
+	static int phoneIDCount;
 	string brand;
 	string model;
 	double price;
